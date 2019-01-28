@@ -85,48 +85,47 @@ const whizzes = [
 class App extends Component {
 
 
-  navigate = () => {
-
-  };
-
   render() {
 
     let whizArray = whizzes.map((whiz, index) => {
       return (
-        <Router>
-          <Switch>
-            <Link to={whiz.path}>
-              <div className="arrayDiv"
-                value={whiz.name}
-                onClick={this.navigate}
-                key={index}>
 
+        <Link to={whiz.path}>
+          <div className="arrayDiv">
+            <img
+              alt={whiz.name}
+              src={whiz.image}
+              height="72" />
+            <h2>{whiz.name}</h2>
+          </div>
+        </Link>
 
-                <Route
-                  path={whiz.path}
-                  component={whiz.component} />
-
-                <div className="arrayDiv2">
-                  <img
-                    alt={whiz.name}
-                    src={whiz.image}
-                    height="64" />
-                  <h2>{whiz.name}</h2>
-                </div>
-              </div>
-            </Link>
-          </Switch>
-        </Router>
       )
     })
 
-    return (
+    let content = (
       <div className="App">
         <Header />
-        <section id="whizArray">
-          {whizArray}
-        </section>
+        <Router>
+          <Switch>
+            <section id="whizArray">
+              {whizArray}
+              <button >
+                <Link to="/">home</Link>
+              </button>
+            </section>
+            
+          </Switch>
+        </Router>
+        
       </div>
+    );
+
+    return (
+      <div>
+        {content}
+      </div>
+
     );
   }
 }

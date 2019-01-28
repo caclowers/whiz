@@ -6,10 +6,12 @@ class Anthropology extends Component {
   render() {
   
     return (
-     
-        <section>
-          <h1>Anthropology</h1>
-        </section>
+     <div>
+       <p>Anthropology</p>
+     </div>
+       
+          
+        
       
     );
   }
