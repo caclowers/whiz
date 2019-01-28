@@ -3,7 +3,8 @@ import {
   HashRouter as Router,
   Route,
   Redirect,
-  Switch
+  Switch,
+  Link
 } from 'react-router-dom';
 import './App.css';
 import Header from '../src/components/Header.js';
@@ -92,33 +93,36 @@ class App extends Component {
 
     let whizArray = whizzes.map((whiz, index) => {
       return (
-        <div className="arrayDiv"
-          value={whiz.name}
-          onClick={this.navigate}
-          key={index}>
-          <Router>
-            <Switch>
-              <Route
-                path={whiz.path}
-                component={whiz.component}/>
-            </Switch>
-          </Router>
-          <div className="arrayDiv2"
-            >
-            <img
-              alt={whiz.name}
-              src={whiz.image}
-              height="64" />
-            <h2>{whiz.name}</h2>
-          </div>
-        </div>
+        <Router>
+          <Switch>
+            <Link to={whiz.path}>
+              <div className="arrayDiv"
+                value={whiz.name}
+                onClick={this.navigate}
+                key={index}>
 
+
+                <Route
+                  path={whiz.path}
+                  component={whiz.component} />
+
+                <div className="arrayDiv2">
+                  <img
+                    alt={whiz.name}
+                    src={whiz.image}
+                    height="64" />
+                  <h2>{whiz.name}</h2>
+                </div>
+              </div>
+            </Link>
+          </Switch>
+        </Router>
       )
     })
 
     return (
       <div className="App">
-       <Header />
+        <Header />
         <section id="whizArray">
           {whizArray}
         </section>
