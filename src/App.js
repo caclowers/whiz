@@ -89,17 +89,17 @@ class App extends Component {
 
     let whizArray = whizzes.map((whiz, index) => {
       return (
-
         <Link to={whiz.path}>
           <div className="arrayDiv">
-            <img
-              alt={whiz.name}
-              src={whiz.image}
-              height="72" />
+            <div className="imgDiv">
+              <img
+                alt={whiz.name}
+                src={whiz.image}
+                height="64" />
+            </div>
             <h2>{whiz.name}</h2>
           </div>
         </Link>
-
       )
     })
 
@@ -114,10 +114,8 @@ class App extends Component {
                 <Link to="/">home</Link>
               </button>
             </section>
-            
           </Switch>
         </Router>
-        
       </div>
     );
 
